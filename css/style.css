@@ -1,0 +1,215 @@
+/* 여주시 지속가능발전협의회 — 정적 리뉴얼 시안 */
+:root {
+  --green: #2f8f46;
+  --green-dark: #1d5e2e;
+  --lime: #8dc63f;
+  --bg: #f7f8f4;
+  --card: #ffffff;
+  --text: #1c2420;
+  --muted: #5b6660;
+  --line: #e1e6df;
+  --max: 1160px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: #fff; padding: .5rem 1rem; z-index: 999; }
+
+/* 시안 안내 띠 */
+.notice-bar {
+  background: #1c2420;
+  color: #e8efe9;
+  font-size: .85rem;
+  text-align: center;
+  padding: .55rem 1rem;
+}
+.notice-bar a { color: var(--lime); text-decoration: underline; }
+
+/* 헤더 */
+header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(6px);
+}
+.nav {
+  max-width: var(--max); margin: 0 auto;
+  padding: .9rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.nav .logo img { height: 40px; width: auto; }
+.menu { display: flex; gap: 1.8rem; list-style: none; font-weight: 600; font-size: .98rem; }
+.menu a { padding: .3rem 0; border-bottom: 2px solid transparent; }
+.menu a:hover, .menu a[aria-current="page"] { color: var(--green); border-color: var(--green); }
+.menu-toggle {
+  display: none; background: none; border: 1px solid var(--line); border-radius: 6px;
+  padding: .4rem .7rem; font-size: 1rem; cursor: pointer;
+}
+
+/* 히어로 */
+.hero {
+  background: linear-gradient(135deg, var(--green-dark), var(--green) 60%, #4ea65a);
+  color: #fff;
+}
+.hero-inner { max-width: var(--max); margin: 0 auto; padding: 5rem 1.5rem 4.5rem; }
+.hero .eyebrow { color: var(--lime); font-weight: 700; letter-spacing: .06em; font-size: .9rem; }
+.hero h1 { font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.3; margin: .6rem 0 1.2rem; letter-spacing: -.02em; }
+.hero p { max-width: 640px; opacity: .92; font-size: 1.05rem; }
+.hero .btns { margin-top: 2rem; display: flex; gap: .8rem; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: .75rem 1.4rem; border-radius: 999px; font-weight: 600;
+  background: #fff; color: var(--green-dark);
+}
+.btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.6); }
+.btn:hover { opacity: .88; }
+
+/* 하위 페이지 머리 */
+.page-head { background: var(--green-dark); color: #fff; }
+.page-head .inner { max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 2.6rem; }
+.page-head .crumb { color: var(--lime); font-size: .85rem; font-weight: 600; }
+.page-head h1 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-top: .3rem; }
+
+/* 공통 섹션 */
+.section { max-width: var(--max); margin: 0 auto; padding: 4rem 1.5rem; }
+.section + .section { padding-top: 0; }
+.section-title { font-size: 1.6rem; letter-spacing: -.02em; margin-bottom: .4rem; }
+.section-lead { color: var(--muted); margin-bottom: 2rem; }
+.subnav { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2.5rem; }
+.subnav a {
+  border: 1px solid var(--line); background: #fff; padding: .45rem 1rem; border-radius: 999px;
+  font-size: .9rem; font-weight: 500; color: var(--muted);
+}
+.subnav a:hover { border-color: var(--green); color: var(--green); }
+
+/* 가치 카드 3개 */
+.values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.value {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem;
+  border-top: 4px solid var(--green);
+}
+.value:nth-child(2) { border-top-color: #e5243b; }
+.value:nth-child(3) { border-top-color: var(--lime); }
+.value h3 { font-size: 1.15rem; margin-bottom: .7rem; }
+.value p { color: var(--muted); font-size: .95rem; }
+.value strong { display: block; margin-top: 1rem; color: var(--text); font-size: .95rem; }
+
+/* 바로가기 */
+.quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.quick a {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem;
+  font-weight: 700; display: flex; flex-direction: column; gap: .3rem;
+  transition: border-color .2s, transform .2s;
+}
+.quick a span { font-weight: 400; color: var(--muted); font-size: .88rem; }
+.quick a:hover { border-color: var(--green); transform: translateY(-3px); }
+
+/* 소식 목록 */
+.boards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.board { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem; }
+.board h3 { font-size: 1.05rem; margin-bottom: .8rem; padding-bottom: .6rem; border-bottom: 2px solid var(--text); }
+.board ul { list-style: none; }
+.board li { display: flex; justify-content: space-between; gap: .8rem; padding: .55rem 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.board li:last-child { border-bottom: 0; }
+.board li a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.board li a:hover { color: var(--green); }
+.board time { color: var(--muted); flex-shrink: 0; font-size: .85rem; }
+
+/* 활동 사진 */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.photo { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.photo img { width: 100%; aspect-ratio: 278 / 180; object-fit: cover; }
+.photo p { padding: .9rem 1.1rem; font-size: .92rem; font-weight: 500; }
+
+/* 본문 글 */
+.prose { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 2.5rem; max-width: 860px; }
+.prose p + p { margin-top: 1rem; }
+.prose .sign { margin-top: 2rem; text-align: right; font-weight: 600; }
+.prose .quote { font-size: 1.15rem; font-weight: 700; color: var(--green); margin-top: 1.5rem; }
+
+/* 연혁 */
+.timeline { list-style: none; border-left: 2px solid var(--line); margin-left: .5rem; max-width: 860px; }
+.timeline > li { position: relative; padding: 0 0 2rem 2rem; }
+.timeline > li::before {
+  content: ''; position: absolute; left: -8px; top: .35rem; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--green); border: 3px solid var(--bg);
+}
+.timeline .year { font-weight: 800; font-size: 1.2rem; color: var(--green-dark); }
+.timeline ul { list-style: none; margin-top: .3rem; }
+.timeline ul li { color: var(--text); font-size: .95rem; padding: .15rem 0; }
+.timeline ul li b { color: var(--muted); font-weight: 600; margin-right: .4rem; }
+
+/* 조직도 */
+.org { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 2.5rem 1.5rem; max-width: 860px; text-align: center; }
+.org .box { display: inline-block; padding: .6rem 1.4rem; border-radius: 8px; font-weight: 700; background: var(--green-dark); color: #fff; min-width: 150px; }
+.org .box small { display: block; font-weight: 400; font-size: .78rem; opacity: .85; }
+.org .side { background: #eef3ec; color: var(--text); }
+.org .row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.org .vline { width: 2px; height: 24px; background: var(--line); margin: 0 auto; }
+.org .divs { display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem; margin-top: .4rem; border-top: 2px solid var(--line); padding-top: 1rem; }
+.org .divs .box { background: var(--green); min-width: 0; font-size: .9rem; padding: .7rem .4rem; }
+
+/* 회칙 */
+.rule { max-width: 860px; }
+.rule .meta { color: var(--muted); font-size: .88rem; margin-bottom: 1.5rem; }
+.rule h2 { font-size: 1.2rem; margin: 2.2rem 0 1rem; color: var(--green-dark); }
+.rule .art { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.4rem; margin-bottom: .7rem; }
+.rule .art h3 { font-size: 1rem; margin-bottom: .3rem; }
+.rule .art p, .rule .art li { font-size: .94rem; color: #333d38; }
+.rule .art ol { padding-left: 1.4rem; margin-top: .3rem; }
+.rule .art .del { color: var(--muted); }
+
+/* SDGs */
+.sdg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+.sdg { border-radius: 12px; color: #fff; padding: 1.3rem; display: flex; flex-direction: column; gap: .4rem; }
+.sdg .num { font-size: 2rem; font-weight: 800; line-height: 1; }
+.sdg h3 { font-size: 1.05rem; }
+.sdg p { font-size: .88rem; opacity: .95; }
+.sdg details summary { cursor: pointer; font-size: .82rem; opacity: .9; margin-top: .3rem; }
+.sdg details p { margin-top: .4rem; }
+
+/* 분과 */
+.divisions { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
+.division { background: var(--card); border: 1px solid var(--line); border-left: 6px solid var(--c, var(--green)); border-radius: 10px; padding: 1.6rem; }
+.division h3 { font-size: 1.15rem; margin-bottom: .5rem; color: var(--c, var(--green)); }
+.division p { color: #333d38; font-size: .95rem; }
+.division .goals { margin-top: .9rem; display: flex; flex-wrap: wrap; gap: .35rem; }
+.division .goals span { font-size: .78rem; background: #f0f3ee; border-radius: 4px; padding: .15rem .5rem; color: var(--muted); }
+
+/* 푸터 */
+footer { background: #1c2420; color: #c8d2cb; margin-top: 2rem; }
+.foot { max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; font-size: .9rem; }
+.foot strong { color: #fff; font-size: 1rem; display: block; margin-bottom: .4rem; }
+.foot a { color: var(--lime); }
+.foot .links { display: flex; flex-direction: column; gap: .3rem; }
+
+@media (max-width: 900px) {
+  .values, .boards, .gallery { grid-template-columns: 1fr 1fr; }
+  .quick { grid-template-columns: 1fr 1fr; }
+  .org .divs { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .menu-toggle { display: block; }
+  .menu {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff;
+    flex-direction: column; gap: 0; border-bottom: 1px solid var(--line);
+  }
+  .menu.open { display: flex; }
+  .menu a { display: block; padding: .9rem 1.5rem; border-bottom: 1px solid var(--line); }
+  .values, .boards, .gallery { grid-template-columns: 1fr; }
+  .org .divs { grid-template-columns: 1fr 1fr; }
+  .prose { padding: 1.5rem; }
+  .hero-inner { padding: 3.5rem 1.5rem; }
+}
