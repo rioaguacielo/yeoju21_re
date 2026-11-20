@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block head %}<section class="page-head"><div class="inner"><div class="crumb">{{ group.label }} · {{ board.label }}</div><h1>{{ board.label }}</h1></div></section>{% endblock %}
+{% block main %}
+    <section class="section">
+      <article class="post">
+        <header class="post-head">
+          <h2>{{ post.title }}</h2>
+          <p class="meta">{{ post.author }} · <time>{{ post.date_str_full }}</time></p>
+        </header>
+        {% if post.youtube_id %}
+        <div class="video"><iframe src="https://www.youtube.com/embed/{{ post.youtube_id }}" title="{{ post.title }} 영상" allowfullscreen loading="lazy"></iframe></div>
+        {% endif %}
+        <div class="post-body">{{ post.html | safe }}</div>
+        {% if post.attachments %}
+        <div class="files">
+          <h3>첨부파일</h3>
+          <ul>{% for f in post.attachments %}<li><a href="{{ f.url }}" download>{{ f.name }}</a>{% if f.size %} <span>({{ f.size }})</span>{% endif %}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
+        <nav class="post-nav">
+          {% if prev %}<a href="{{ prev.url }}"><span>이전 글</span>{{ prev.title }}</a>{% endif %}
+          {% if next %}<a href="{{ next.url }}"><span>다음 글</span>{{ next.title }}</a>{% endif %}
+          <a class="btn-list" href="{{ base }}/{{ board.key }}/">목록</a>
+        </nav>
+      </article>
+    </section>
+{% endblock %}

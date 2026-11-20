@@ -1,0 +1,513 @@
+# Pages CMS 설정 — https://app.pagescms.org 에서 이 저장소를 열면 아래 게시판들이 글쓰기 화면에 나타납니다.
+# 업로드한 이미지는 저장소에 올라간 뒤 GitHub Actions가 긴 변 1600px 이하로 자동으로 줄입니다.
+media:
+  - name: images
+    label: 이미지
+    input: uploads/images
+    output: /uploads/images
+    rename: safe
+    categories: [image]
+  - name: files
+    label: 첨부파일
+    input: uploads/files
+    output: /uploads/files
+    rename: false
+    categories: [document, spreadsheet, compressed, video, audio, image]
+
+content:
+  - name: notice
+    label: "소통공간 · 공지사항"
+    type: collection
+    path: content/notice
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: bbs
+    label: "소통공간 · 참여게시판"
+    type: collection
+    path: content/bbs
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: news
+    label: "소통공간 · 지속가능발전소식"
+    type: collection
+    path: content/news
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: general
+    label: "소통공간 · 환경상식"
+    type: collection
+    path: content/general
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: pds
+    label: "소통공간 · 자료실"
+    type: collection
+    path: content/pds
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: gallery
+    label: "갤러리 · 사진갤러리"
+    type: collection
+    path: content/gallery
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: thumbnail
+        label: 대표 이미지
+        type: image
+        description: 목록에 보일 사진입니다. 비워 두면 본문의 첫 사진을 씁니다.
+        options:
+          media: images
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: media
+    label: "갤러리 · 영상갤러리"
+    type: collection
+    path: content/media
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: thumbnail
+        label: 대표 이미지
+        type: image
+        description: 목록에 보일 사진입니다. 비워 두면 본문의 첫 사진을 씁니다.
+        options:
+          media: images
+      - name: youtube
+        label: 유튜브 주소
+        type: string
+        description: "예: https://youtu.be/영상ID — 넣으면 글 위에 영상이 나옵니다."
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: city
+    label: "분과 & Action · 기후생태분과"
+    type: collection
+    path: content/city
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: eco
+    label: "분과 & Action · 먹거리농업분과"
+    type: collection
+    path: content/eco
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: edu
+    label: "분과 & Action · 지속가능발전교육분과"
+    type: collection
+    path: content/edu
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: local
+    label: "분과 & Action · 지역문화분과"
+    type: collection
+    path: content/local
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images
+  - name: society
+    label: "분과 & Action · 사회경제분과"
+    type: collection
+    path: content/society
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 작성일
+        type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm"
+      - name: author
+        label: 작성자
+        type: string
+        default: 여주시지속가능발전협의회
+      - name: attachments
+        label: 첨부파일
+        type: file
+        list: true
+        options:
+          media: files
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          format: html
+          media: images

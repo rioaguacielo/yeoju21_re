@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% set nav = "home" %}
+{% block title %}홈{% endblock %}
+{% block head %}{% endblock %}
+{% block main %}
+<section class="hero">
+<div class="hero-inner">
+<div class="eyebrow">YEOJU SUSTAINABLE DEVELOPMENT COUNCIL</div>
+<h1>미래를 위한 우리의 선택이<br/>중요합니다.</h1>
+<p>여주시 지속가능발전협의회는 민·관·산·학이 함께 고민하고 행동하는 거버넌스로, 여주에서 지속가능발전목표(SDGs)를 이루기 위한 다양한 활동을 펼치고 있습니다.</p>
+<div class="btns">
+<a class="btn" href="about.html">협의회 소개</a>
+<a class="btn ghost" href="sdgs.html">SDGs 17개 목표 보기</a>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="values">
+<article class="value">
+<h3>‘지속 가능한 발전’을 위한 국제적인 약속</h3>
+<p>지속가능발전목표는 ‘미래 세대의 필요를 충족시킬 수 있으면서 오늘날의 필요도 충족시키는’ 발전을 위한 국제적인 약속입니다. 2015년 9월 전 세계 유엔 회원 국가들이 모여 합의했습니다.</p>
+</article>
+<article class="value">
+<h3>Eco city YEOJU</h3>
+<p>여주시 지속가능발전협의회는 SDGs에 발맞춰 문화환경의 도시 여주를 풍족하고 행복한 사람들이 사는 살기좋은 도시로 만들어 나가기 위해, 여주시민·청년·학생들과 함께하는 다양한 실천방안을 만들어 가는 협의체입니다.</p>
+<strong>시민의 참여, 여주의 미래를 만들어 나가는 밑거름입니다.</strong>
+</article>
+<article class="value">
+<h3>Well-being life</h3>
+<p>돈이 아닌 삶의 질이 풍족할 때 사람은 행복을 느끼게 됩니다. 민·관 구분없이 지속가능한 발전을 위해 자기 자리에서 노력할 때 여주시의 웰빙 라이프가 실현될 것입니다.</p>
+<strong>여주시 지속가능발전협의회는 웰빙 라이프를 꿈꿉니다.</strong>
+</article>
+</div>
+</section>
+<section class="section">
+<div class="quick">
+<a href="about.html">협의회 소개<span>인사말 · 연혁 · 조직도</span></a>
+<a href="sdgs.html">SDGs<span>지속가능발전목표란? · 17개 목표</span></a>
+<a href="action.html">분과 &amp; Action<span>5개 분과의 활동</span></a>
+<a href="https://ydem.co.kr/" rel="noopener">여주디지털생태지도<span>외부 사이트로 이동</span></a>
+</div>
+</section>
+<section class="section">
+      <h2 class="section-title">활동모습</h2>
+      <p class="section-lead">여주시 지속가능발전협의회의 활동모습입니다. <a class="more" href="{{ base }}/gallery/">더보기 →</a></p>
+      <div class="gallery">
+        {% for p in posts.gallery[:6] %}<figure class="photo"><a href="{{ p.url }}">{% if p.thumb %}<img src="{{ p.thumb }}" alt="" loading="lazy" />{% else %}<div class="noimg">사진</div>{% endif %}<p>{{ p.title }}<time>{{ p.date_str }}</time></p></a></figure>{% endfor %}
+      </div>
+    </section>
+<section class="section">
+      <h2 class="section-title">협의회 소식</h2>
+      <p class="section-lead">다양한 소식, 그리고 소통의 공간입니다.</p>
+      <div class="boards">
+        {% for key in ['notice', 'bbs', 'news'] %}
+        <div class="board"><h3><a href="{{ base }}/{{ key }}/">{{ boards[key].label }}</a><a class="more" href="{{ base }}/{{ key }}/" aria-label="{{ boards[key].label }} 더보기">+</a></h3><ul>
+          {% for p in posts[key][:5] %}<li><a href="{{ p.url }}">{{ p.title }}</a><time>{{ p.date_str[2:] }}</time></li>{% else %}<li>등록된 글이 없습니다.</li>{% endfor %}
+        </ul></div>
+        {% endfor %}
+      </div>
+    </section>
+{% endblock %}

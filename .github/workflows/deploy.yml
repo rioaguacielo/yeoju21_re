@@ -1,0 +1,65 @@
+# 글이나 사진이 올라올 때마다:
+#  1) uploads/ 의 큰 이미지를 자동으로 줄여 저장소에 다시 저장하고
+#  2) 사이트를 새로 만들어 GitHub Pages 에 배포합니다.
+# 설정 > Pages > Source 를 "GitHub Actions" 로 해 두어야 합니다.
+name: 사이트 배포
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 패키지 설치
+        run: pip install pillow pyyaml jinja2 markdown
+
+      - name: 큰 이미지 자동 축소
+        run: python scripts/resize_images.py uploads
+
+      - name: 줄인 이미지 저장소에 저장
+        run: |
+          if [ -n "$(git status --porcelain uploads)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add uploads
+            git commit -m "업로드 이미지 자동 축소"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: 사이트 만들기
+        run: python scripts/build.py
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

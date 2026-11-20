@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock %} | {{ site.title }}{% if site.draft %} (리뉴얼 시안){% endif %}</title>
+  <meta name="description" content="{{ site.description }}" />
+  {% if site.draft %}<meta name="robots" content="noindex" />{% endif %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="{{ base }}/css/style.css?v={{ build_id }}" />
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  {% if site.draft %}<div class="notice-bar">이 페이지는 홈페이지 <b>리뉴얼 시안</b>입니다. 공식 사이트는 <a href="http://yeoju21.or.kr/" rel="noopener">yeoju21.or.kr</a>입니다.</div>{% endif %}
+  <header>
+    <div class="nav">
+      <a href="{{ base }}/" class="logo"><img src="{{ base }}/images/logo.png" alt="{{ site.title }}" width="255" height="60" /></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu">메뉴</button>
+      <ul class="menu" id="menu">
+        {% for item in site.nav %}
+        <li><a href="{{ base }}{{ item.url }}"{% if nav == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </header>
+  {% block head %}{% endblock %}
+  <main id="main">
+{% block main %}{% endblock %}
+  </main>
+  <footer>
+    <div class="foot">
+      <div>
+        <strong>{{ site.title }}</strong>
+        {{ site.address }}<br />
+        T. {{ site.tel }} · F. {{ site.fax }}
+      </div>
+      <div class="links">
+        <a href="https://band.us/@yeojusdg" rel="noopener">네이버 밴드</a>
+        <a href="https://ydem.co.kr/" rel="noopener">여주디지털생태지도</a>
+        <span>ⓒ Yeoju SDG{% if site.draft %}. 리뉴얼 시안{% endif %}</span>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const t = document.querySelector('.menu-toggle'), m = document.getElementById('menu');
+    t.addEventListener('click', () => { const o = m.classList.toggle('open'); t.setAttribute('aria-expanded', o); });
+  </script>
+</body>
+</html>

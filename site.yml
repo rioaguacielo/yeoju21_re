@@ -1,0 +1,44 @@
+# 사이트 설정 — 이 파일만 고치면 메뉴와 게시판 구성이 바뀝니다.
+title: 여주시 지속가능발전협의회
+description: 여주시 지속가능발전협의회 홈페이지
+# 정식 오픈 전에는 true (상단 '리뉴얼 시안' 안내 표시, 검색엔진 차단)
+draft: true
+# GitHub Pages 주소의 하위 경로. 자체 도메인(yeoju21.or.kr)으로 옮기면 "" 로 바꿉니다.
+baseurl: /yeoju21_re
+address: 경기도 여주시 신륵로 70(천송동) 여주시 차량등록사무소 2층
+tel: 031-886-6333
+fax: 031-886-6338
+
+nav:
+  - { key: home, label: 홈, url: / }
+  - { key: about, label: 협의회 소개, url: /about.html }
+  - { key: sdgs, label: 지속가능발전목표, url: /sdgs.html }
+  - { key: action, label: 분과 & Action, url: /action.html }
+  - { key: community, label: 소통공간, url: /notice/ }
+  - { key: gallery, label: 갤러리, url: /gallery/ }
+
+# 게시판 목록. type: list(목록형) / gallery(사진형)
+groups:
+  community:
+    label: 소통공간
+    boards: [notice, bbs, news, general, pds]
+  gallery:
+    label: 갤러리
+    boards: [gallery, media]
+  action:
+    label: 분과 & Action
+    boards: [city, eco, edu, local, society]
+
+boards:
+  notice:  { label: 공지사항, type: list }
+  bbs:     { label: 참여게시판, type: list }
+  news:    { label: 지속가능발전소식, type: list }
+  general: { label: 환경상식, type: list }
+  pds:     { label: 자료실, type: list }
+  gallery: { label: 사진갤러리, type: gallery }
+  media:   { label: 영상갤러리, type: gallery }
+  city:    { label: 기후생태분과, type: list }
+  eco:     { label: 먹거리농업분과, type: list }
+  edu:     { label: 지속가능발전교육분과, type: list }
+  local:   { label: 지역문화분과, type: list }
+  society: { label: 사회경제분과, type: list }
