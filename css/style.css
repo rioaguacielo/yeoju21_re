@@ -39,7 +39,7 @@ img { max-width: 100%; display: block; }
 .notice-bar a { color: var(--lime); text-decoration: underline; }
 
 /* 헤더 */
-header {
+.site-header {
   background: rgba(255,255,255,.96);
   border-bottom: 1px solid var(--line);
   position: sticky; top: 0; z-index: 50;
@@ -213,7 +213,7 @@ header {
 .division .goals span { font-size: .78rem; background: #f0f3ee; border-radius: 4px; padding: .15rem .5rem; color: var(--muted); }
 
 /* 푸터 */
-footer { background: #1c2420; color: #c8d2cb; margin-top: 2rem; }
+.site-footer { background: #1c2420; color: #c8d2cb; margin-top: 2rem; }
 .foot { max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; font-size: .9rem; }
 .foot strong { color: #fff; font-size: 1rem; display: block; margin-bottom: .4rem; }
 .foot a { color: var(--lime); }
