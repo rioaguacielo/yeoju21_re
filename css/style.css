@@ -87,8 +87,15 @@ header {
 .btn:hover { opacity: .88; }
 
 /* 하위 페이지 머리 */
-.page-head { background: var(--green-dark); color: #fff; }
-.page-head .inner { max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 2.6rem; }
+.page-head { background: linear-gradient(135deg, var(--green-dark), #26763a); color: #fff; position: relative; overflow: hidden; }
+.page-head::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url('../images/hero-yeoju.svg') right 62% / cover no-repeat;
+  opacity: .2;
+  pointer-events: none;
+}
+.page-head .inner { position: relative; max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 2.6rem; }
 .page-head .crumb { color: var(--lime); font-size: .85rem; font-weight: 600; }
 .page-head h1 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-top: .3rem; }
 
@@ -213,7 +220,7 @@ footer { background: #1c2420; color: #c8d2cb; margin-top: 2rem; }
 @media (max-width: 720px) {
   .menu-toggle { display: block; }
   .nav .logo img { height: 46px; }
-  .hero::before { opacity: .14; }
+  .hero::before, .page-head::before { opacity: .14; }
   .menu {
     display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff;
     flex-direction: column; gap: 0; border-bottom: 1px solid var(--line);
